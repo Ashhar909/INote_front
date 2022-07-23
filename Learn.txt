@@ -1,0 +1,28 @@
+Got to know that thunk is important for doing async tasks
+thunk is a middleware for redux store 
+that can hault an action before it is dispatched
+also called the store enhancer
+
+    npm i redux-thunk
+    import
+    insite createstore (reducer, applyMiddleware(thunk))
+    ** now instead of objects the action creators can return a callback function that is async in nature
+    ** previous return
+    const fn = () => {
+        return{
+            type: "DO",
+            msg: "msg"
+        }
+    }
+
+    const fn = () => {
+        return async(dispatch) => {
+            // do some async action
+            dispatch({
+                type: "DO",
+                msg: "msg"
+            })
+            
+        }
+    }
+    
