@@ -36,3 +36,10 @@ export const createUser = (creds) => {
     console.log(json);
   };
 };
+
+
+export const logout = () => {
+  return({
+      type: "LOGOUT"
+    })
+}

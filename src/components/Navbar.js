@@ -1,7 +1,10 @@
 import React from "react";
 import {Link, useLocation} from 'react-router-dom';
+import SignedOutLinks from "./Auth/SignedOutLinks";
+import {connect} from 'react-redux'
+import SignedInLinks from "./Auth/SignedInLinks";
 
-function Navbar() {
+function Navbar(props) {
     //* used for just making the link brighter in Navbar after we go to that route
     let location = useLocation(); 
   return (
@@ -35,16 +38,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-              <Link to="/">
-                <button className="btn btn-outline-success mx-1">
-                  Login
-                </button>
-              </Link>
-              <Link to="/signup">
-                <button className="btn btn-outline-success mx-1" >
-                  SignUp
-                </button>
-              </Link>
+            {props.authStatus ? <SignedInLinks/> : <SignedOutLinks/>} 
           </div>
         </div>
       </nav>
@@ -52,4 +46,10 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+const mapStateToProps = (state) => {
+  return{
+    authStatus: state.auth.success
+  }
+}
+
+export default connect(mapStateToProps)(Navbar);

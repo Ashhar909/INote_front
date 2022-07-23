@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import { connect } from 'react-redux'
+import { useNavigate } from 'react-router'
 import { createUser } from '../../Store/Actions/Auth/AuthActions'
 
 const Signup = (props) => {
+  const Navigate = useNavigate()
   const [creds, setCreds] = useState({
     name:"",
     email:"",
@@ -15,10 +17,9 @@ const Signup = (props) => {
     })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = () => {
     props.createAccount(creds)
-    console.log(creds)
+    Navigate('/home')
   }
 
   return (

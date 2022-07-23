@@ -7,14 +7,13 @@ import EditNoteAction from '../Store/Actions/NotesActions/EditNoteAction'
 const EditNote = (props) => {
     const params = useParams()
     const Navigate = useNavigate(); 
-
+    
     let id = params.id.toString();
-    // console.log(id)
-
+    
     // return that note whose id is equal to that of params.id
     let requiredNote = props.notes.find( note => note._id===id) 
-    
     const [note, setnote] = useState(requiredNote)
+    
 
     const handleChange = (e) => {
         setnote({...note,
@@ -79,7 +78,7 @@ const mapStateToProps=(state)=>{
 
 const mapDispatchToProps = (dispatch) => {
     return{
-        editNote: (note) => (dispatch(EditNoteAction(note)))
+        editNote: (note,token) => (dispatch(EditNoteAction(note,token)))
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(EditNote)

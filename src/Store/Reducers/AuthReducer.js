@@ -7,20 +7,29 @@ const initialState = {
 const authReducer = (state = initialState, action)=>{
     switch (action.type){
         case "LOGIN_ERROR":
-            console.log(action.err)
-            break
+            return{
+                ...state,
+                error:action.err
+            }
 
         case "LOGIN_SUCCESS":
             return{
                 ...state,
                 token:action.authtoken,
-                success:true
+                success:true,
+                error:null
+            }
+
+        case "LOGOUT":
+            return{
+                ...state,
+                token:null,
+                success:false
             }
 
         default:
             return state
     }
-    return state
 }
 
 export default authReducer

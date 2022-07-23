@@ -17,7 +17,7 @@ function Home(props) {
       Navigate('/')
     }
     // eslint-disable-next-line
-  }, [])
+  })
   
   return (
       <div className="container">
