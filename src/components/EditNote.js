@@ -52,14 +52,15 @@ const EditNote = (props) => {
           <label htmlFor="description" className="form-label">
             Description
           </label>
-          <input
-            type="text"
+        
+          <textarea
             className="form-control"
             id="description"
+            rows="5"
             name="description"
             value={note.description}
             onChange={handleChange}
-          />
+          ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleClick}>
           Edit
