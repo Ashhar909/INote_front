@@ -26,7 +26,7 @@ function Navbar(props) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            {props.authStatus ? <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className={`nav-link ${location.pathname === '/home'?'active': ""}`} aria-current="page" to = "/home">
                   Home
@@ -37,9 +37,9 @@ function Navbar(props) {
                   About
                 </Link>
               </li>
-            </ul>
-            {props.authStatus ? <SignedInLinks/> : <SignedOutLinks/>} 
+            </ul> : <div className="text-success">Welcomz</div> }   
           </div>
+            {props.authStatus ? <SignedInLinks/> : <SignedOutLinks/>} 
         </div>
       </nav>
     </div>

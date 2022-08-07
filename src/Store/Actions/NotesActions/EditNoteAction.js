@@ -17,7 +17,7 @@ const EditNoteAction = (note,token) => {
         console.log(err.msg)
       })
 
-      const json = response.json()
+      const json = await response.json()
     dispatch({
       type: "EDIT_NOTE",
       note: json

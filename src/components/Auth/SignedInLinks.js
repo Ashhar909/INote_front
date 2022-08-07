@@ -12,7 +12,7 @@ const SignedInLinks = (props) => {
   return (
     <div>
         <Link to="/">
-        <button onClick = {handleClick} className="btn btn-outline-success mx-1">Logout</button>
+            <button onClick = {handleClick} className="btn btn-outline-success mx-1">Logout</button>
         </Link>
     </div>
   )

@@ -26,8 +26,6 @@ const EditNote = (props) => {
         e.preventDefault();
         props.editNote(note,props.auth.token);
         Navigate('/home')
-        // console.log(props)
-        // console.log(note);
     }
 
   return (
