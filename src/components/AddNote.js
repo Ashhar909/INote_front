@@ -21,21 +21,21 @@ const AddNote = (props) => {
     setnote({ ...note, [e.target.name]: e.target.value });
   };
   return (
-    <div>
+    <div className = "addnote">
       <h2 className="my-3">Add Note</h2>
-      <form className="my-4">
+      <form className="my-4 cardBorder">
         <div className="mb-3">
           <label htmlFor="title" className="form-label">
             Title
           </label>
           <input
             type="text"
-            className="form-control"
             id="title"
             name="title"
             value={note.title}
             onChange={handleChange}
             aria-describedby="emailHelp"
+            // style={{backgroundColor:"#F5CBA7"}}
           />
         </div>
         <div className="mb-3">
@@ -43,7 +43,6 @@ const AddNote = (props) => {
             Description
           </label>
           <textarea
-            className="form-control"
             id="description"
             rows="5"
             name="description"

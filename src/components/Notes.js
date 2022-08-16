@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import AddNote from "./AddNote";
 import NoteItem from "./NoteItem";
+import Quote from "./Quote";
 
 function Notes(props) {
   let notelist = null
@@ -16,7 +17,10 @@ function Notes(props) {
   
   return (
     <div className="container">
-      <AddNote />
+      <div className="row">
+        <div className="col-8"><AddNote /></div>
+        <div className="col-4"><Quote/></div>
+      </div>
       <div className="row">
         <h2>Your Notes</h2>
         {props.notes? notelist : <div>Loading...</div>}
