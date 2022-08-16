@@ -61,7 +61,7 @@ const EditNote = (props) => {
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleClick}>
-          Edit
+          Update
         </button>
       </form>
     </div>
