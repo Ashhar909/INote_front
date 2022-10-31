@@ -27,7 +27,7 @@ export const getCreds = (creds) => {
 };
 
 export const createUser = (creds) => {
-  return async () => {
+  return async (dispatch) => {
     const response = await fetch("http://localhost:8000/api/auth/createuser", {
       method: "POST",
       headers: {
@@ -36,11 +36,18 @@ export const createUser = (creds) => {
       body: JSON.stringify(creds),
     });
     const json = await response.json();
-    if(!json.error){
+    if (!json.error) {
       localStorage.setItem('token', json.authtoken);
-    }
-    else{
-      localStorage.clear()
+      dispatch({
+        type: "LOGIN_SUCCESS",
+        authtoken: json.authtoken,
+      });
+    } else {
+      localStorage.clear();
+      dispatch({
+        type: "LOGIN_ERROR",
+        err: json.error,
+      });
     }
   };
 };
