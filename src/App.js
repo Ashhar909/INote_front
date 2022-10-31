@@ -12,7 +12,6 @@ function App() {
   return (
     <BrowserRouter>
     <Navbar/>
-    {/* <Alert message="hello alert"/> */}
     <div className='container'>
     <Routes>
       <Route exact path="/home" element={<Home />} />

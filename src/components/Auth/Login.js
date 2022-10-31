@@ -1,9 +1,11 @@
 import React, { useState } from "react";
+
 import { useNavigate } from "react-router";
 import { connect } from "react-redux";
 import { getCreds } from "../../Store/Actions/Auth/AuthActions";
 
 const Login = (props) => {
+
   const Navigate = useNavigate();
   const [creds, setCreds] = useState({ email: "", password: "" });
 
@@ -12,8 +14,13 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await props.authenticate(creds);
-    Navigate("/home");
-    // console.log(creds)
+    console.log(props.authstat)
+    if(localStorage.getItem('token')){
+      Navigate("/home");
+    }
+    else{
+      alert("Invalid")
+    }
   };
 
   const handleChange = (e) => {
@@ -73,7 +80,7 @@ const Login = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    aurhstat: state.auth,
+    authstat: state.auth,
   };
 };
 
