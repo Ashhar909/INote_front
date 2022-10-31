@@ -7,6 +7,7 @@ const SignedInLinks = (props) => {
     const Navigate = useNavigate()
     const handleClick = () => {
         props.logout();
+        props.showAlert("Signed Out succesfully", "success")
         Navigate('/')
     }
   return (

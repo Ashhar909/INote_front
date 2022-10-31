@@ -1,37 +1,47 @@
-import React, {useState} from 'react'
-import { connect } from 'react-redux'
-import { useNavigate } from 'react-router'
-import { createUser } from '../../Store/Actions/Auth/AuthActions'
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router";
+import { createUser } from "../../Store/Actions/Auth/AuthActions";
 
 const Signup = (props) => {
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
   const [creds, setCreds] = useState({
-    name:"",
-    email:"",
-    password:""
-  })
+    name: "",
+    email: "",
+    password: "",
+  });
 
   const handleChange = (e) => {
     setCreds({
-      ...creds,[e.target.name]:e.target.value
-    })
-  }
+      ...creds,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = () => {
-    props.createAccount(creds)
-    Navigate('/home')
-  }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await props.createAccount(creds);
+    if (localStorage.getItem("token")) {
+      props.showAlert("Signed up succesfully", "success");
+      Navigate("/home");
+    } else {
+      props.showAlert("Enter Valid Credentials", "danger");
+    }
+  };
 
   return (
-    <div className='container my-4'>
+    <div className="container my-4 signup">
       <form onSubmit={handleSubmit}>
+        <h2 className="my-3" style={{ borderBottom: "1px solid black" }}>
+          Sign Up
+        </h2>
+        <div classname="entries">
         <div className="mb-3">
-          <label htmlFor="name" className="form-label">
+          <h5 htmlFor="name" className="form-label">
             Name
-          </label>
+          </h5>
           <input
             type="text"
-            className="form-control"
             id="name"
             name="name"
             value={creds.name}
@@ -40,12 +50,11 @@ const Signup = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputEmail1" className="form-label">
+          <h5 htmlFor="exampleInputEmail1" className="form-label">
             Email address
-          </label>
+          </h5>
           <input
             type="email"
-            className="form-control"
             id="email"
             name="email"
             value={creds.email}
@@ -55,12 +64,11 @@ const Signup = (props) => {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="password" className="form-label">
+          <h5 htmlFor="password" className="form-label">
             Password
-          </label>
+          </h5>
           <input
             type="password"
-            className="form-control"
             id="password"
             name="password"
             value={creds.password}
@@ -68,18 +76,19 @@ const Signup = (props) => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary" >
+        </div>
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 const mapDispatchToprops = (dispatch) => {
-  return{
-    createAccount : (creds) => dispatch(createUser(creds))
-  }
-}
+  return {
+    createAccount: (creds) => dispatch(createUser(creds)),
+  };
+};
 
-export default connect(null,mapDispatchToprops)(Signup)
+export default connect(null, mapDispatchToprops)(Signup);

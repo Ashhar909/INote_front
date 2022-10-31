@@ -10,7 +10,7 @@ function Notes(props) {
     notelist = props.notes.map((note) => {
     return (
       <div key={note._id} className="col-md-3 my-3">
-        <NoteItem note={note} />
+        <NoteItem note={note} showAlert={props.showAlert}/>
       </div>
     )
   })}
@@ -18,7 +18,7 @@ function Notes(props) {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-8"><AddNote /></div>
+        <div className="col-8"><AddNote showAlert = {props.showAlert}/></div>
         <div className="col-4"><Quote/></div>
       </div>
       <div className="row">

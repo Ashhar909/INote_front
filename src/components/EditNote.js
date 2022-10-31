@@ -25,6 +25,7 @@ const EditNote = (props) => {
     const handleClick = (e) => {
         e.preventDefault();
         props.editNote(note,props.auth.token);
+        props.showAlert("Note edited succesfully", "success");
         Navigate('/home')
     }
 
@@ -32,10 +33,10 @@ const EditNote = (props) => {
     <div>
         <h2 className="my-3">Add Note</h2>
       <form className="my-4">
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
+        <div className="mb-3 texten">
+          <h5 htmlFor="title" className="form-label">
             Title
-          </label>
+          </h5>
           <input
             type="text"
             className="form-control"
@@ -46,10 +47,10 @@ const EditNote = (props) => {
             aria-describedby="emailHelp"
           />
         </div>
-        <div className="mb-3">
-          <label htmlFor="description" className="form-label">
+        <div className="mb-3 texten">
+          <h5 htmlFor="description" className="form-label">
             Description
-          </label>
+          </h5>
         
           <textarea
             className="form-control"

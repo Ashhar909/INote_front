@@ -5,7 +5,6 @@ import { connect } from "react-redux";
 import { getCreds } from "../../Store/Actions/Auth/AuthActions";
 
 const Login = (props) => {
-
   const Navigate = useNavigate();
   const [creds, setCreds] = useState({ email: "", password: "" });
 
@@ -14,12 +13,11 @@ const Login = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     await props.authenticate(creds);
-    console.log(props.authstat)
-    if(localStorage.getItem('token')){
+    if (localStorage.getItem("token")) {
+      props.showAlert("Logged In succesfully", "success");
       Navigate("/home");
-    }
-    else{
-      alert("Invalid")
+    } else {
+      props.showAlert("Enter Valid Credentials", "danger");
     }
   };
 
@@ -31,10 +29,10 @@ const Login = (props) => {
   return (
     <div className="login">
       <form onSubmit={handleSubmit}>
-          <h2 className="my-3" style={{ borderBottom: "1px solid black" }}>
-            Welcome back
-          </h2>
-          <div className="entries">
+        <h2 className="my-3" style={{ borderBottom: "1px solid black" }}>
+          Sign In
+        </h2>
+        <div className="entries">
           <h5
             htmlFor="exampleInputEmail1"
             className="form-label"
@@ -64,7 +62,7 @@ const Login = (props) => {
             value={creds.password}
             onChange={handleChange}
           />
-          </div>
+        </div>
         <button
           type="submit"
           className="btn btn-primary"

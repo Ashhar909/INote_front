@@ -10,6 +10,7 @@ const NoteItem = (props) => {
   const handleClick = (e) => {
     e.preventDefault()
     props.deleteNote(note._id,props.auth.token)
+    props.showAlert("Note Deleted Succesfully", "success")
   }
   return (
     <div className="card" style={{ height: "200px", overflow:"hidden"}}>

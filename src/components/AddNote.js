@@ -14,20 +14,22 @@ const AddNote = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     props.addNote(note, props.auth.token);
+    props.showAlert("Note added Successfully", "success");
     setnote({ title: "", description: "", tag: "" });
     // console.log(props)
   };
   const handleChange = (e) => {
     setnote({ ...note, [e.target.name]: e.target.value });
   };
+
   return (
     <div className = "addnote">
       <h2 className="my-3">Add Note</h2>
       <form className="my-4 cardBorder">
-        <div className="mb-3">
-          <label htmlFor="title" className="form-label">
+        <div className="mb-3 texten">
+          <h5 htmlFor="title">
             Title
-          </label>
+          </h5>
           <input
             type="text"
             id="title"
@@ -35,13 +37,12 @@ const AddNote = (props) => {
             value={note.title}
             onChange={handleChange}
             aria-describedby="emailHelp"
-            // style={{backgroundColor:"#F5CBA7"}}
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
+          <h5 htmlFor="description" className="form-label">
             Description
-          </label>
+          </h5>
           <textarea
             id="description"
             rows="5"

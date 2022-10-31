@@ -28,14 +28,20 @@ export const getCreds = (creds) => {
 
 export const createUser = (creds) => {
   return async () => {
-    await fetch("http://localhost:8000/api/auth/createuser", {
+    const response = await fetch("http://localhost:8000/api/auth/createuser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      
       body: JSON.stringify(creds),
     });
+    const json = await response.json();
+    if(!json.error){
+      localStorage.setItem('token', json.authtoken);
+    }
+    else{
+      localStorage.clear()
+    }
   };
 };
 

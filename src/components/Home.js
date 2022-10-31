@@ -21,7 +21,7 @@ function Home(props) {
   
   return (
       <div className="container">
-        <Notes/>
+        <Notes showAlert = {props.showAlert}/>
       </div>
   );
 }
