@@ -15,7 +15,7 @@ const NoteItem = (props) => {
   return (
     <div className="card" style={{ height: "200px", overflow:"hidden"}}>
       <div className="card-header">
-        Ash Note
+        <i class="fa-duotone fa-notebook"></i>
         <i
           style={{ position: "absolute", right: "10px", top: "13px", cursor:"pointer" }}
           className="fa-solid fa-trash-can"

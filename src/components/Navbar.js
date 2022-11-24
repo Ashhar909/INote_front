@@ -11,7 +11,7 @@ function Navbar(props) {
       <nav className="navbar navbar-dark navbar-expand-lg bg-dark ">
         <div className="container-fluid">
           <Link className="navbar-brand" to = "/home">
-            INote
+            <strong>Records</strong>
           </Link>
           <button
             className="navbar-toggler"

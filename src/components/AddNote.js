@@ -24,7 +24,7 @@ const AddNote = (props) => {
 
   return (
     <div className = "addnote">
-      <h2 className="my-3">Add Note</h2>
+      <h2 className="my-3">Add Record</h2>
       <form className="my-4 cardBorder">
         <div className="mb-3 texten">
           <h5 htmlFor="title">
@@ -52,7 +52,7 @@ const AddNote = (props) => {
           ></textarea>
         </div>
         <button className="btn btn-primary" onClick={handleClick}>
-          Add Note
+          Add
         </button>
       </form>
     </div>

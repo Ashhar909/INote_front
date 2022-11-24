@@ -22,7 +22,7 @@ function Notes(props) {
         <div className="col-4"><Quote/></div>
       </div>
       <div className="row">
-        <h2>Your Notes</h2>
+        <h2>Your Records</h2>
         {props.notes? notelist : <div>Loading...</div>}
       </div>
     </div>
